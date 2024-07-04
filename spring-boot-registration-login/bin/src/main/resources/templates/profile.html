@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Profile</title>
+</head>
+<body>
+    <h1>User Profile</h1>
+    <form th:action="@{/updateProfile}" th:object="${profile}" method="post">
+        <div>
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" th:field="*{firstName}" />
+        </div>
+        <div>
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" th:field="*{lastName}" />
+        </div>
+        <div>
+            <label for="fathersName">Father's Name:</label>
+            <input type="text" id="fathersName" th:field="*{fathersName}" />
+        </div>
+        <div>
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="text" id="phoneNumber" th:field="*{phoneNumber}" />
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" th:field="*{email}" />
+        </div>
+        <div>
+            <label for="birthday">Birthday:</label>
+            <input type="date" id="birthday" th:field="*{birthday}" />
+        </div>
+        <div>
+            <button type="submit">Update Profile</button>
+            <a href="#" onclick="history.back();" class="button">Cancel</a>
+        </div>
+    </form>
+</body>
+</html>

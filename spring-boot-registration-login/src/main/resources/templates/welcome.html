@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>User Profile</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container text-center">
+    <div>
+        <form th:action="@{/logout}" method="post">
+            <p>
+                Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+            </p>
+            <input type="submit" value="Sign Out" />
+        </form>
+    </div>
+    <div>
+        <h1>User Profile</h1>
+    </div>
+    
+    <div>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>User ID</th>
+                    <th>E-mail</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Profile Picture</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td th:text="${#request.userPrincipal.principal.id}">User ID</td>
+                    <td th:text="${#request.userPrincipal.principal.email}">E-mail</td>
+                    <td th:text="${#request.userPrincipal.principal.firstName}">First Name</td>
+                    <td th:text="${#request.userPrincipal.principal.lastName}">Last Name</td>
+                    <td>
+                        <img th:if="${#request.userPrincipal.principal.profilePicture != null}"
+                             th:src="@{'/assets/images/' + ${#request.userPrincipal.principal.profilePicture}}"
+                             alt="Profile Picture" class="profile-picture" style="width: 50px; height: 50px; border-radius: 50%;" />
+                        <span th:if="${#request.userPrincipal.principal.profilePicture == null}">No Picture</span>
+                    </td>
+                    <td>
+                        <a th:href="@{/profile/view/{id}(id=${#request.userPrincipal.principal.id})}" class="btn btn-primary">View/Edit Profile</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div><h2><a th:href="@{/users}">List of Users</a></h2></div>
+</div>
+</body>
+</html>

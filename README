@@ -1,0 +1,12 @@
+Java Maven project with Spring Boot and an embedded Tomcat server for registration and login using MySQL database. The frontend is built with Thymeleaf. Added admin functionality to see the list of users and delete them if needed.
+
+Created Docker image using the Dockerfile
+
+Created Dockerfile for the MySQL database initializing the schema with a init.sql file
+
+Created docker-compose.yml file to run the database and the spring project
+
+
+
+
+
